@@ -40,12 +40,11 @@ main() {
             status = IN;
         }
     }
- or ( int j = 0 ; j <= wordindex ; j++ ) {
+ for ( int j = 0 ; j <= wordindex ; j++ ) {
         for ( int k = 1 ; k <= massive[j] ; k++ )
             printf("x");
         printf("\n");
-                                              это для вывода горизонтальной гистограммы ,что делается весьма просто
-    }*/
+    }
 
     int maximum, e;
     maximum = 0;
