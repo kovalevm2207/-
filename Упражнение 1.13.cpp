@@ -12,7 +12,9 @@
 #define MAXSIZE 1000
 #define IN 1
 #define OUT 0
-main() {
+int main() {
+
+    printf ( "Пожалйуста, введите текст для анализа и поставьте в конце него знак '@' :\n\n" );
 
     int massive[MAXSIZE];
     int c, status, wordindex;
@@ -22,36 +24,63 @@ main() {
         massive[i] = 0;
 
     for ( c = getchar() ; c != '@' ; c = getchar()) {
-        if ( wordindex <= MAXSIZE - 1 && (c == ' ' || c == '\t' || c == '\n'
+        if (wordindex <= MAXSIZE - 1 && c == ' ' || c == '\t' || c == '\n'
                                        || c == ',' || c == '.' || c == '!'
                                        || c == '?' || c == '/' || c == '\\'
                                        || c == ')' || c == '(' || c == ':'
                                        || c == ';' || c == '0' || c == '1'
                                        || c == '2' || c == '3' || c == '4'
                                        || c == '5' || c == '6' || c == '7'
-                                       || c == '8' || c == '9' || c == '%') ) {
+                                       || c == '8' || c == '9' || c == '%'){
+
             if (status == IN) {
                 wordindex++;
             }
             status = OUT;
-        }
-        else {
+        } else {
             massive[wordindex]++;
             status = IN;
+          }
+    }
+
+    printf ( "\n\nЕсть возможность вывести два типа гистограмм длинн вводимых слов:\n1) горизонтальная гистограмма\n2) вертикальная гистограмма\nВыберите тип гистограммы ( 1 или 2):\n\n" );
+
+    char vybor;
+    scanf ( " %d", &vybor);
+
+    printf ("\n\n" );
+
+    if ( vybor == 1 ) {
+        for ( int j = 0 ; j <= wordindex ; j++ ) {
+            for ( int k = 1 ; k <= massive[j] ; k++ ) {
+                printf("x");
+            }
+            printf("\n");
         }
-    }
- for ( int j = 0 ; j <= wordindex ; j++ ) {
-        for ( int k = 1 ; k <= massive[j] ; k++ )
-            printf("x");
-        printf("\n");
-    }
+    } else if ( vybor == 2 ) {
 
-    int maximum, e;
-    maximum = 0;
+                int maximum = 0;
 
-    while ( e <= wordindex ) {
-        if ( massive[e] > maximum )
-            maximum = massive[e];
-    }
-    printf("%d", maximum);
+                for ( int e = 0 ; e < wordindex ; e++) {
+                    if ( massive[e] > maximum ) {
+                        maximum = massive[e];
+                    }
+                }
+
+                for ( int r = 0 ; r < maximum ; r++) {
+                     for ( int x = 0 ; x <= wordindex ; x++ ) {
+                         if ( massive[x] >= maximum - r ) {
+                             printf ( "x " );
+                         } else {
+                             printf ( "  " );
+                           }
+                     }
+                     printf("\n");
+                }
+             } else {
+                   printf ( "Выбранного вами варанта ответа не существует, начните анализ текста заново и в этот раз будьте вниматильнее ;)\n" );
+                   return 1;
+               }
+    return 0;
 }
+
