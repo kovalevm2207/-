@@ -6,7 +6,7 @@
 int main() {
 
     int c, r, status, value[MAXSIZE];
-    char sumbol[MAXSIZE];
+    wchar_t sumbol[MAXSIZE];
     c = getchar();
     status = NO;                                // задаем переменные с массивами и присваиваим им значения
     for ( int i = 0 ; i < MAXSIZE ; i++) {
@@ -27,7 +27,7 @@ int main() {
         status = NO;
         c = getchar();
     }
-
+    /*
     for ( int i = 0 ; value[i] != 0 && i < MAXSIZE ; i++ ) {
          putchar( sumbol[i] );
     }                                                                 //это проверка того, как заполнились массивы
@@ -35,7 +35,7 @@ int main() {
     for ( int i = 0 ; value[i] != 0 && i < MAXSIZE ; i++ ) {
          printf( "%d", value[i] );
     }
-    printf("\n");
+    printf("\n");   */
     int maximum = 0;
 
     for ( int i = 0 ; value[i] != 0 && 1 < MAXSIZE ; i++) {
